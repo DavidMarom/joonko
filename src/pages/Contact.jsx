@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setPageName, loadDB } from '../store/actions/userActions'
+import React, { useState } from 'react'
+import {productService} from '../services/productService'
 
 const _Contact = () => {
-	const dispatch = useDispatch()
+	// const dispatch = useDispatch()
 
 	const [name_err, setName_err] = useState('');
 	const [company_err, setComp_err] = useState('');
@@ -11,18 +10,35 @@ const _Contact = () => {
 	const [email_err, setEmail_err] = useState('');
 
 
-
-
 	const doSend = async ev => {
 		ev.preventDefault();
+		let valid = true;
+
+		if (!(/^[a-z ,.'-]+$/i.test(ev.target.name.value))) {
+			setName_err('Invalid, please try again'); valid = false
+		} else { setName_err('') }
+
+		if (!(/^[a-z ,.'-]+$/i.test(ev.target.company.value))) {
+			setComp_err('Invalid, please try again'); valid = false
+		} else { setComp_err('') }
+
+		if (!(/^[0-9]+$/i.test(ev.target.phone.value))) {
+			setPhone_err('Invalid, please try again'); valid = false
+		} else { setPhone_err('') }
 
 		if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(ev.target.email.value))) {
-			setEmail_err('Wrong mail');
+			setEmail_err('Invalid, please try again'); valid = false
+		} else { setEmail_err('') }
+
+		if (valid) {
+			
+			let link = productService.getProducts(1)
+			
+			link.then((res,rej)=>{
+				window.open(res.link, '_blank').focus();
+			})
 		}
-
-
-
-
+		
 
 
 	};

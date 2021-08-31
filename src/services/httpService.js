@@ -1,44 +1,50 @@
 import Axios from 'axios';
 
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '//fakestoreapi.com/'
-    : '//fakestoreapi.com/'
+	? 'https://u5d6gnw6aj.execute-api.us-east-1.amazonaws.com/api/'
+	: 'https://u5d6gnw6aj.execute-api.us-east-1.amazonaws.com/api/'
 
 
-var axios = Axios.create({
-    withCredentials: false
-});
+	
+	
+	var axios = Axios.create({
+		withCredentials: false
+	});
+	
+	axios.defaults.headers.common = {
+		"X-API-Key": "VXUsgQ2jsq3EM30icjHA91tETkqFwtXDak07xebM",
+	};
 
 export const httpService = {
-    get(endpoint, data) {
-        if (endpoint === 'undefined') { endpoint = '' }
-        return ajax(endpoint, 'GET', data)
-    },
-    post(endpoint, data) {
-        return ajax(endpoint, 'POST', data)
-    },
-    put(endpoint, data) {
-        return ajax(endpoint, 'PUT', data)
-    },
-    delete(endpoint, data) {
-        return ajax(endpoint, 'DELETE', data)
-    }
+	get(endpoint, data) {
+		if (endpoint === 'undefined') { endpoint = '' }
+		return ajax(endpoint, 'GET', data)
+	},
+	post(endpoint, data) {
+		return ajax(endpoint, 'POST', data)
+	},
+	put(endpoint, data) {
+		return ajax(endpoint, 'PUT', data)
+	},
+	delete(endpoint, data) {
+		return ajax(endpoint, 'DELETE', data)
+	}
 }
 
 async function ajax(endpoint, method = 'get', data = null) {
-    try {
-        const res = await axios({
-            url: `${BASE_URL}${endpoint}`,
-            method,
-            data
-        })
-        return res.data;
-    } catch (err) {
-        console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`);
-        console.dir(err);
-        if (err.response && err.response.status === 401) {
-            window.location.assign('/');
-        }
-        throw err;
-    }
+	try {
+		const res = await axios({
+			url: `${BASE_URL}${endpoint}`,
+			method,
+			data
+		})
+		return res.data;
+	} catch (err) {
+		console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`);
+		console.dir(err);
+		if (err.response && err.response.status === 401) {
+			window.location.assign('/');
+		}
+		throw err;
+	}
 }
