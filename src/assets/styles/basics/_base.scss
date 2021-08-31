@@ -3,12 +3,12 @@
 }
 
 ::selection {
-	background-color: $clr1;
-	color: $clr6;
+	background-color: #190e77;
+	color: #ffffff;
 }
 
 html {
-	font-family: Oswald;
+	font-family: mulish-500;
 	overflow-y: scroll;
 }
 
@@ -16,7 +16,7 @@ body {
 	font-size: rem(16px);
 	margin: 0;
 	background-color: $bg-light;
-	color: $text-light;
+	color: $text-color;
 }
 
 h1,
@@ -25,37 +25,21 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: Oswald;
+	font-family: mulish-500;
 }
 
-h1 {
-	font-size: rem(48px);
-	color: $text-light;
-	margin: 0;
-}
-
-h6 {
-	font-style: normal;
-	font-weight: 500;
-	font-size: 20px;
-	line-height: 24px;
-	/* identical to box height */
-
-	letter-spacing: 0.15px;
-}
-
-.small-text {
-	height: 17px;
-	font-family: Oswald;
-	font-size: 14px;
-	font-weight: 500;
-	font-stretch: normal;
-	font-style: normal;
-	line-height: normal;
-	letter-spacing: 0.1px;
-	text-align: left;
-	color: #8787ab;
-}
+// .small-text {
+// 	height: 17px;
+// 	font-family: Oswald;
+// 	font-size: 14px;
+// 	font-weight: 500;
+// 	font-stretch: normal;
+// 	font-style: normal;
+// 	line-height: normal;
+// 	letter-spacing: 0.1px;
+// 	text-align: left;
+// 	color: #8787ab;
+// }
 
 // p {
 // 	margin: 0 0 1em;

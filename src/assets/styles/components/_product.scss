@@ -37,21 +37,21 @@
 .category-text {
 	min-height: 30px;
 	p {
-		color: $text-dark;
+		// color: $text-dark;
 		font-size: 0.9rem;
 		margin: 0px;
 		text-align: center;
 	}
 }
 
-.add-to-list {
-	color: $yellow;
-	cursor: pointer;
+// .add-to-list {
+// 	color: $yellow;
+// 	cursor: pointer;
 
-	&:hover {
-		color: #ff0088;
-	}
-}
+// 	&:hover {
+// 		color: #ff0088;
+// 	}
+// }
 
 .on-list {
 	color: #ff0088;
