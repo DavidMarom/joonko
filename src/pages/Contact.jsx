@@ -9,10 +9,11 @@ const _Contact = () => {
 	const [phone_err, setPhone_err] = useState('');
 	const [email_err, setEmail_err] = useState('');
 	const [check_err, setCheck_err] = useState(false);
+	const [check_stts, setCheck_stts] = useState(false);
 
 	const toggleCheck = () => {
-		console.log(check_err)
-		setCheck_err(!check_err);
+		console.log(check_stts)
+		setCheck_stts(!check_stts);
 	}
 
 	const doSend = async ev => {
@@ -35,9 +36,10 @@ const _Contact = () => {
 			setEmail_err('Invalid, please try again'); valid = false
 		} else { setEmail_err('') }
 
-		if (!check_err) {
+		if (!check_stts) {
 			setCheck_err('You must agree to the terms'); valid = false
-		} else { setCheck_err('') }
+		} 
+		else { setCheck_err('') }
 
 		if (valid) {
 
