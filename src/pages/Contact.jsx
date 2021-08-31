@@ -8,13 +8,17 @@ const _Contact = () => {
 	const [company_err, setComp_err] = useState('');
 	const [phone_err, setPhone_err] = useState('');
 	const [email_err, setEmail_err] = useState('');
-	const [check_err, setCheck_err] = useState('');
+	const [check_err, setCheck_err] = useState(false);
 
+	const toggleCheck = () => {
+		console.log(check_err)
+		setCheck_err(!check_err);
+	}
 
 	const doSend = async ev => {
 		ev.preventDefault();
 		let valid = true;
-		
+
 		if (!(/^[a-z ,.'-]+$/i.test(ev.target.name.value))) {
 			setName_err('Invalid, please try again'); valid = false
 		} else { setName_err('') }
@@ -31,9 +35,9 @@ const _Contact = () => {
 			setEmail_err('Invalid, please try again'); valid = false
 		} else { setEmail_err('') }
 
-		if (ev.target.check.value===false){
-			setCheck_err('Invalid, please try again'); valid = false
-		}else { setCheck_err('') }
+		if (!check_err) {
+			setCheck_err('You must agree to the terms'); valid = false
+		} else { setCheck_err('') }
 
 		if (valid) {
 
@@ -97,9 +101,14 @@ const _Contact = () => {
 					<div className="ra"><button className="submit-btn">Download now</button></div>
 
 					<div className="ra">
-						<input type="checkbox" name="check" className="w20" />
-						<p>I agree to the privacy policy including for Joonko to use my contact details to contact me for marketing purposes.</p>
-						<div className="err-msg">{check_err}</div>
+						<input type="checkbox" name="check" className="w20" onClick={toggleCheck} />
+						<div className="cb">
+
+							<p>I agree to the privacy policy including for Joonko to use my contact details to contact me for marketing purposes.
+
+							</p>
+							<div className="err-msg" >{check_err}</div>
+						</div>
 
 					</div>
 
