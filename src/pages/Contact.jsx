@@ -12,9 +12,19 @@ const _Contact = () => {
 
 
 
+
 	const doSend = async ev => {
 		ev.preventDefault();
-		console.log('form submit clicked');
+
+		if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(ev.target.email.value))) {
+			setEmail_err('Wrong mail');
+		}
+
+
+
+
+
+
 	};
 
 	return (
