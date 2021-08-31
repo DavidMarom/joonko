@@ -29,14 +29,55 @@
 		font-family: mulish-500;
 	}
 }
-
+*:focus {
+    outline: none;
+}
 .contact-right {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	// align-items: flex-start;
+	padding: 40px;
 	max-width: 410px;
-	// background-color: #9ac7b3;
 	width: 100%;
 
 	box-shadow: 0px 3px 16px #00000029;
 	opacity: 1;
+
+	input {
+		color: #a5a5a5;
+		border: 0;
+		border-bottom: 1px solid #707070;
+		width: 100%;
+	}
+}
+
+// ****************** Form
+.err-msg {
+	color: #ed6982;
+	font-size: 12px;
+}
+
+.input-container {
+	height: 60px;
+	// background-color: #f6bcc7;
+}
+
+.submit-btn {
+	top: 652px;
+	left: 1138px;
+	width: 188px;
+	height: 54px;
+	background: #ffa52e 0% 0% no-repeat padding-box;
+	border-radius: 50px;
+	border: 0;
+	color: #ffffff;
+	text-align: center;
+	font-size: 18px;
+	font: 100;
+
+	
 }
 
 @media only screen and (max-width: 900px) {
@@ -47,4 +88,9 @@
 		width: 100%;
 		align-items: flex-start;
 	}
+
+	// .contact-left {
+	// 	max-width: 310px;
+	// 	width: 100%;
+	// }
 }
