@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {productService} from '../services/productService'
+import { productService } from '../services/productService'
 
 const _Contact = () => {
 	// const dispatch = useDispatch()
@@ -8,12 +8,13 @@ const _Contact = () => {
 	const [company_err, setComp_err] = useState('');
 	const [phone_err, setPhone_err] = useState('');
 	const [email_err, setEmail_err] = useState('');
+	const [check_err, setCheck_err] = useState('');
 
 
 	const doSend = async ev => {
 		ev.preventDefault();
 		let valid = true;
-
+		
 		if (!(/^[a-z ,.'-]+$/i.test(ev.target.name.value))) {
 			setName_err('Invalid, please try again'); valid = false
 		} else { setName_err('') }
@@ -30,15 +31,19 @@ const _Contact = () => {
 			setEmail_err('Invalid, please try again'); valid = false
 		} else { setEmail_err('') }
 
+		if (ev.target.check.value===false){
+			setCheck_err('Invalid, please try again'); valid = false
+		}else { setCheck_err('') }
+
 		if (valid) {
-			
+
 			let link = productService.getProducts(1)
-			
-			link.then((res,rej)=>{
+
+			link.then((res, rej) => {
 				window.open(res.link, '_blank').focus();
 			})
 		}
-		
+
 
 
 	};
@@ -90,6 +95,14 @@ const _Contact = () => {
 					</div>
 
 					<div className="ra"><button className="submit-btn">Download now</button></div>
+
+					<div className="ra">
+						<input type="checkbox" name="check" className="w20" />
+						<p>I agree to the privacy policy including for Joonko to use my contact details to contact me for marketing purposes.</p>
+						<div className="err-msg">{check_err}</div>
+
+					</div>
+
 				</form>
 			</div>
 		</div>

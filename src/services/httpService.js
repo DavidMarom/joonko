@@ -4,9 +4,6 @@ const BASE_URL = process.env.NODE_ENV === 'production'
 	? 'https://u5d6gnw6aj.execute-api.us-east-1.amazonaws.com/api/'
 	: 'https://u5d6gnw6aj.execute-api.us-east-1.amazonaws.com/api/'
 
-
-	
-	
 	var axios = Axios.create({
 		withCredentials: false
 	});
