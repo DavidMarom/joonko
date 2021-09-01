@@ -46,10 +46,10 @@
 	box-shadow: 0px 3px 16px #00000029;
 	opacity: 1;
 
-	.w20{
+	.w20 {
 		width: 40px;
 		padding-right: 20px;
-		margin-right:20px ;
+		margin-right: 20px;
 	}
 
 	input {
@@ -85,6 +85,26 @@
 	font: 100;
 }
 
+.drawer {
+	background: #ffffff 0% 0% no-repeat padding-box;
+	box-shadow: 0px 3px 6px #00000029;
+	opacity: 1;
+	padding-left: 10px;
+	padding-right: 15px;
+	cursor: pointer;
+	margin-bottom: 15px;
+
+	p {
+		margin: 8px;
+	}
+
+}
+
+
+.rotate-90{
+	transform: rotate(90deg);
+}
+
 @media only screen and (max-width: 900px) {
 	.contact-container {
 		display: flex;
@@ -93,7 +113,6 @@
 		width: 100%;
 		align-items: flex-start;
 		margin-top: 20px;
-
 	}
 
 	.contact-left {

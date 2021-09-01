@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { productService } from '../services/productService'
+import { DropDown } from '../cmps/DropDown'
 
 const _Contact = () => {
-	// const dispatch = useDispatch()
-
 	const [name_err, setName_err] = useState('');
 	const [company_err, setComp_err] = useState('');
 	const [phone_err, setPhone_err] = useState('');
@@ -12,7 +11,6 @@ const _Contact = () => {
 	const [check_stts, setCheck_stts] = useState(false);
 
 	const toggleCheck = () => {
-		console.log(check_stts)
 		setCheck_stts(!check_stts);
 	}
 
@@ -38,25 +36,36 @@ const _Contact = () => {
 
 		if (!check_stts) {
 			setCheck_err('You must agree to the terms'); valid = false
-		} 
+		}
 		else { setCheck_err('') }
 
 		if (valid) {
+			let formData = {
+				name: ev.target.name.value,
+				company_name: ev.target.company.value,
+				email: ev.target.email.value,
+				phone: ev.target.phone.value
+			}
 
-			let link = productService.getProducts(1)
-
-			link.then((res, rej) => {
-				window.open(res.link, '_blank').focus();
+			let isEmployee = productService.sendFormData(formData);
+			isEmployee.then((res, rej) => {
+				if (res.id === 1) {
+					let link = productService.getProducts(1)
+					link.then((res, rej) => {
+						window.open(res.link, '_blank').focus();
+					})
+				}
+				else { window.location.href = "https://joonko.co/" }
+			}).catch((error) => {
+				alert(error);
 			})
 		}
-
-
-
 	};
 
 	return (
 		<div className="contact-container">
 			<div className="contact-left">
+
 				<h1>
 					The Future of Work in the now: Why you should Become Remote-ready
 				</h1>
@@ -64,14 +73,8 @@ const _Contact = () => {
 					Infographic
 				</h2>
 
-				The results are in, and the verdict? Remote is here to stay. Thanks to a global pandemic companies have had to reevaluate the power of distributed workforces and we’ve put together all the reasons why going remote is the right move to make. In this infographics, you’ll see:
-				<ul>
-					<li>How remote work broadens the talent pool</li>
-					<li>The productivity results behind distributed teams</li>
-					<li>An increase in diversity as a result of remote recruitment</li>
-					<li>Money saved on operational costs and salary negotiations</li>
-				</ul>
-				What better time to refresh your strategy than on the brink of a whole new world? Dig into this list of recruiting methodologies and adjust your sails for the future!
+				<DropDown />
+
 
 			</div>
 			<div className="contact-right">
