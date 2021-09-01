@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { productService } from '../services/productService'
 import { DropDown } from '../cmps/DropDown'
+import { Info } from '../cmps/Info'
+
 
 const _Contact = () => {
 	const [name_err, setName_err] = useState('');
@@ -65,6 +67,10 @@ const _Contact = () => {
 	return (
 		<div className="contact-container">
 			<div className="contact-left">
+				<div className="info-container">
+
+					<Info />
+				</div>
 
 				<h1>
 					The Future of Work in the now: Why you should Become Remote-ready

@@ -8,8 +8,6 @@ function sendFormData(data) {
 	return httpService.post(`data/`,data);
 }
 
-
-
 export const productService = {
 	getProducts,
 	sendFormData

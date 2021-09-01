@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 
+import { ReactComponent as Arrow } from '../assets/img/arrow.svg';
+
+
 export const DropDown = () => {
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 
 
 	const toggleHandler = () => {
@@ -14,8 +17,8 @@ export const DropDown = () => {
 
 			<div className="drawer rb">
 				<p>Details</p>
-				{(open ? <div onClick={toggleHandler}>►</div> :
-					<div onClick={toggleHandler} className="rotate-90">►</div>)}
+				{(open ? <div onClick={toggleHandler} className="rotate-90"><Arrow /></div> :
+					<div onClick={toggleHandler} className="rotate-0" ><Arrow /></div>)}
 			</div>
 			<div>
 
@@ -28,7 +31,7 @@ export const DropDown = () => {
 					<div>
 
 
-						
+
 
 						The results are in, and the verdict? Remote is here to stay. Thanks to a global pandemic companies have had to reevaluate the power of distributed workforces and we’ve put together all the reasons why going remote is the right move to make. In this infographics, you’ll see:
 						<ul>
